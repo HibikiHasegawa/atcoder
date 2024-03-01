@@ -1,0 +1,30 @@
+//配列の要素の総和を再帰関数を用いて求めるプログラム
+#include <bits/stdc++.h>
+using namespace std;
+
+int array_sum_fromi(vector<int> &data, int i){
+  if (i == data.size()){
+    return 0;
+  }
+  int total = 0;
+  total = data.at(i) + array_sum_fromi(data, i + 1);
+  return total;
+}
+
+int array_sum(vector<int> &data){
+  int total=0;
+  total = array_sum_fromi(data, 0);
+  return total;
+}
+
+int main(){
+  int N = 0;
+  cin >> N;
+  vector<int> data(N);
+  for (int i = 0; i < N; i++){
+    cin >> data.at(i);
+  }
+  cout << array_sum(data) << endl;
+  
+  return 0;
+}
