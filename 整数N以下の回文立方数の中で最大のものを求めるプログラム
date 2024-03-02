@@ -1,0 +1,29 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+using ll = long long;
+
+bool isPalindrome(ll num){
+    string s = to_string(num);
+    string t = s;
+    reverse(t.begin(),t.end());
+    return s == t;
+
+}
+int main(){
+    ll N;
+    cout << "整数を入力してください:";
+    cin >> N;
+    ll answer = 0;
+    for(ll i = 1;i * i * i <= N;i++){
+        if(isPalindrome(i * i * i)){
+            answer = i * i * i;
+        }
+    }
+
+    cout << answer << endl;
+
+    return 0;
+}
