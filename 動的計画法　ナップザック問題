@@ -1,0 +1,24 @@
+#https://atcoder.jp/contests/dp/tasks/dp_d
+#動的計画法DP(Dynamic prigramming)
+#ナップザック問題
+
+def main():
+    print("品物数と容量を入力してください:",end="")
+    N, W = map(int, input().split())
+    dp = [[0]*(W+1) for _ in range(N+1)]
+
+    for i in range(1, N+1):
+        print(i,"番目の品物の重さと価値を入力してください:" ,end="")
+        wi, vi = map(int, input().split())
+        for w in range(W+1):
+            if w- wi <0:
+                dp[i][w] = dp[i-1][w]
+            else:
+                dp[i][w] = max(dp[i-1][w], dp[i-1][w-wi] + vi)
+    
+    print("解答:",dp[N][w])
+
+
+if __name__ == '__main__':
+    main()
+ 
